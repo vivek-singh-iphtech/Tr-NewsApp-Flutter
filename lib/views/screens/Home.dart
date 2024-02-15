@@ -32,7 +32,8 @@ class _HomeState extends State<Home> {
         title: const Text(
           'News Today',
           style: TextStyle(
-            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            color: Colors.black ,
           ),
         ),
         centerTitle: true,

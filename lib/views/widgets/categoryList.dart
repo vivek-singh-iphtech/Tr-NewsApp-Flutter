@@ -11,13 +11,13 @@ class CategoryList extends StatefulWidget {
 class _CategoryListState extends State<CategoryList> {
 
    List<ListItem> items = [
-    ListItem('business',isSelected:true),
-    ListItem('entertainment'),
-    ListItem('general'),
-    ListItem('health'),
-    ListItem('science'),
-    ListItem('sports'),
-    ListItem('technology'),
+    ListItem('Business',isSelected:true),
+    ListItem('Entertainment'),
+    ListItem('General'),
+    ListItem('Health'),
+    ListItem('Science'),
+    ListItem('Sports'),
+    ListItem('Technology'),
   ];
 
    @override
