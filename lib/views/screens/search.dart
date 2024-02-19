@@ -1,46 +1,58 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/models/topheadlines_models.dart';
-import 'package:news_app/providers/CategoryWiseTopheadlines_providers.dart';
-import 'package:news_app/views/common/articleWebView.dart';
-import 'package:news_app/views/widgets/categoryList.dart';
+import 'package:news_app/providers/EverythingNews_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:news_app/views/common/articleWebView.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 
-class CategoryHeadlines extends ConsumerWidget {
-  const CategoryHeadlines({Key? key}) : super(key: key);
+class Search extends ConsumerWidget {
+ Search({ Key? key }) : super(key: key);
+  String query ='';
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
-      children: [
-        CategoryList(
-          onItemSelected: (category) {
-           
-            final CategoryWiseTopHeadlinesController =
-                ref.read(categorynewsprovider);
-            CategoryWiseTopHeadlinesController
-                .fetchCategoryWiseTopHeadlinesArticles(category);
+  Widget build(BuildContext context,WidgetRef ref) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+           title: TextField(
+          onChanged: (value) {
+            query = value; // Update the query on text change
           },
+          onSubmitted: (value) {
+            // Fetch articles based on the submitted query
+               final everydayNews =
+                ref.read(Everythingnewsprovider);
+            everydayNews
+                .fetchEveryNews(query);
+          },
+          decoration: InputDecoration(
+            hintText: 'Search',
+            border: InputBorder.none,
+          ),
         ),
-        Consumer(
+      ),
+          body: Column(
+            children: [
+
+               Consumer(
           builder: (context, watch, _) {
-            final articlesAsyncValue = ref.watch(CategoryArticleProvider);
+            final articlesAsyncValue = ref.watch(ArticleNewsProvider);
             return articlesAsyncValue.when(
               data: (articles) {
                 // Display your articles here
-
+            
                 return Container(
-                  height: MediaQuery.of(context).size.height*0.385,
+                  height: MediaQuery.of(context).size.height*0.88,
                   child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: articles.length,
                       scrollDirection: Axis.vertical,
                       itemBuilder: (context, index) {
                         final article = articles[index];
-
+            
                         return GestureDetector(
                           onTap: () {
                       navigateToWebView(context, article!);
@@ -152,11 +164,11 @@ class CategoryHeadlines extends ConsumerWidget {
             );
           },
         ),
-      ],
+            ],
+          ),
     );
   }
-
-   void navigateToWebView(BuildContext context, Articles article) {
+ void navigateToWebView(BuildContext context, Articles article) {
     if (kIsWeb) {
       launch(article.url!);
     } else {
@@ -172,7 +184,7 @@ class ShimmerLoadingEffect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height*0.2,
+      height: MediaQuery.of(context).size.height*0.88,
           child: SizedBox(
             width: 300,
             height: 190,
