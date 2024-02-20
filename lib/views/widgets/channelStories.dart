@@ -29,11 +29,10 @@ class ChannelStories extends ConsumerWidget {
                       onTap: () async {
                         final NewschannelWiseController =
                             ref.read(ChannelWiseNewsProvider);
-                        bool data = NewschannelWiseController
+                        NewschannelWiseController.fetchNewsByChannelArticles(
+                            channel_sources?.id);
+                        List<Articles?> list = await NewschannelWiseController
                             .fetchNewsByChannelArticles(channel_sources?.id);
-                        List<Articles?> list =
-                            await NewschannelWiseController.fetchArticles(
-                                'abc-news');
                         if (list.isNotEmpty) {
                           Navigator.push(
                             context,

@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/providers/NewsByChannelSources_providers.dart';
 import 'package:news_app/views/common/articleWebView.dart';
+import 'package:news_app/views/widgets/channelStories.dart';
 import 'package:story_view/story_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:news_app/models/topheadlines_models.dart';
@@ -41,7 +42,6 @@ class _StoryViewPageState extends State<StoryViewPage> {
 
   @override
   void dispose() {
-    storyItems.clear();
     super.dispose();
   }
 }
@@ -60,35 +60,39 @@ class StoryViewPageContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print('++');
-
     return Consumer(builder: (context, watch, _) {
       final articlesAsyncValue = ref.watch(NewsChannelWiseArticleProvider);
+
       return articlesAsyncValue.when(
         data: (articles) {
           if (storyItems.isEmpty) {
             storyItems.addAll(
               articles.map((article) {
-                print(article?.title);
                 return StoryItem.inlineImage(
-                    url: article!.urlToImage!,
+                    url: article?.urlToImage ?? 'No resposne',
                     controller: storyController,
                     caption: Text(
-                      article.title ?? 'no',
+                      article?.title ?? 'no',
                       style: TextStyle(
                           fontSize: 45,
                           color: Colors.white,
                           fontWeight: FontWeight.bold),
                     ));
+                    
+                    
               }),
             );
           }
-          return StoryView(
-            progressPosition: ProgressPosition.top,
-            repeat: true,
-            controller: storyController,
-            storyItems: storyItems,
-          );
+           return StoryView(
+                progressPosition: ProgressPosition.top,
+                controller: storyController,
+                storyItems: storyItems,
+                onVerticalSwipeComplete: (direction) {
+                  if (direction == Direction.up) {
+                    Navigator.pop(context);
+                  }
+                });
+        
         },
         loading: () => CircularProgressIndicator(),
         error: (error, stackTrace) => Text('Error: $error'),

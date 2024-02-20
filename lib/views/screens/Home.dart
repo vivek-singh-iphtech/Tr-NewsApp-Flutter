@@ -26,9 +26,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 250, 241, 237),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 250, 241, 237),
+        backgroundColor: Colors.white,
         title: const Text(
           'News Today',
           style: TextStyle(

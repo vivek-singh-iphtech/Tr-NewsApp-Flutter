@@ -12,20 +12,7 @@ class NewsByChannelSources {
 
   Stream<List<Articles?>> get articlesStream => _articlesController.stream;
 
-  // Method to fetch Channel Wise top headlines articles
-  bool fetchNewsByChannelArticles(String? id) {
-    fetchArticles(id).then((articles) {
-      _articlesController.add(articles);
-      return true;
-    }).catchError((error) {
-      log('Error fetching articles: $error');
-      _articlesController.addError(error);
-      return false;
-    });
-      return false;
-  }
-
-   Future<List<Articles?>> fetchArticles(String? id) async {
+   Future<List<Articles?>> fetchNewsByChannelArticles(String? id) async {
     try {
       final url =
           Uri.parse('${ApiUrl.Base_URL}${ApiUrl.NewsByChannelSources}$id');
@@ -36,11 +23,14 @@ class NewsByChannelSources {
         List<dynamic> data = json.decode(response.body)['articles'];
         List<Articles?> topChannelWiseArticles =
             data.map((article) => Articles.fromJson(article)).toList();
+            _articlesController.add(topChannelWiseArticles);
         return topChannelWiseArticles;
       } else {
         throw Exception("Failed to load data");
+        
       }
     } catch (e) {
+      _articlesController.addError(e);
       log(e.toString());
       throw e;
     }
