@@ -15,11 +15,12 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-✍🏻 Intro:
+✍🏻 **Intro**:
 
 Introducing our News app, designed for efficient and swift updates. With Quick Reads, you can swiftly glance through news titles and catch up on top headlines, ensuring you're always informed on-the-go. This app offers categorized sections, allowing you to delve into specific topics of interest effortlessly. Plus, with a powerful search feature, finding relevant articles is a breeze. Stay informed and ahead of the curve with our News app.
 
-📚 TechStack:
+
+📚 **TechStack**:
 
 Our News app is built using the **Flutter framework**, ensuring a smooth and consistent user experience across multiple platforms.
 
@@ -51,7 +52,8 @@ Here's a breakdown of the key packages we utilize:
 
 12. **connectivity_plus**: Lastly, the connectivity_plus package helps us monitor and manage network connectivity, ensuring a seamless experience even in varying network conditions.
 
-👨🏻‍🍳 features:
+
+👨🏻‍🍳 **features**:
 
 Here's a breakdown of the features of the News app:
 
@@ -84,7 +86,8 @@ Here's a breakdown of the features of the News app:
    - When there is no internet connection, a Snackbar message notifies the user about the lack of connectivity.
    - Upon reconnecting to the internet, another Snackbar message confirms the internet connection, ensuring users are aware that data can be fetched and displayed.
 
-💭 Process:
+
+💭 **Process**:
 
 The development process of the News app involves following the MVC (Model-View-Controller) architecture and utilizing Riverpod for state management. Here's an overview of the key steps involved:
 
@@ -115,23 +118,33 @@ The development process of the News app involves following the MVC (Model-View-C
 
 By following the MVC architecture and integrating Riverpod for state management, the News app achieves a structured and efficient development process. 
 
-🚦 Running the Project:
 
-Clone the repository:
-git clone https://github.com/your-username/your-repo.git
+🚦 **Running the Project**
 
-Navigate to the Flutter project directory:
-cd your-repo/flutter_app.
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/your-repo.git
+    ```
 
-Install dependencies:
-flutter pub get
+2. **Navigate to the Flutter project directory**:
+    ```bash
+    cd your-repo/flutter_app
+    ```
 
-Run the application:
-flutter run
+3. **Install dependencies**:
+    ```bash
+    flutter pub get
+    ```
+
+4. **Run the application**:
+    ```bash
+    flutter run
+    ```
 
 The application should now be running on the connected emulator or physical device.
 
-📷 Screenshots:
+
+📷 **Screenshots**:
 
 ![Alt Text](assets/images/home.jpg)
 
