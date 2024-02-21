@@ -16,9 +16,11 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 ✍🏻 Intro:
+
 Introducing our News app, designed for efficient and swift updates. With Quick Reads, you can swiftly glance through news titles and catch up on top headlines, ensuring you're always informed on-the-go. This app offers categorized sections, allowing you to delve into specific topics of interest effortlessly. Plus, with a powerful search feature, finding relevant articles is a breeze. Stay informed and ahead of the curve with our News app.
 
 📚 TechStack:
+
 Our News app is built using the **Flutter framework**, ensuring a smooth and consistent user experience across multiple platforms.
 
 To fetch news data, we integrate the newsapi.org API, allowing us to access a vast repository of news articles from various sources and categories.
@@ -50,6 +52,7 @@ Here's a breakdown of the key packages we utilize:
 12. **connectivity_plus**: Lastly, the connectivity_plus package helps us monitor and manage network connectivity, ensuring a seamless experience even in varying network conditions.
 
 👨🏻‍🍳 features:
+
 Here's a breakdown of the features of the News app:
 
 1. **Quick Reads**:
@@ -82,6 +85,7 @@ Here's a breakdown of the features of the News app:
    - Upon reconnecting to the internet, another Snackbar message confirms the internet connection, ensuring users are aware that data can be fetched and displayed.
 
 💭 Process:
+
 The development process of the News app involves following the MVC (Model-View-Controller) architecture and utilizing Riverpod for state management. Here's an overview of the key steps involved:
 
 1. **Models**:
@@ -112,6 +116,7 @@ The development process of the News app involves following the MVC (Model-View-C
 By following the MVC architecture and integrating Riverpod for state management, the News app achieves a structured and efficient development process. 
 
 🚦 Running the Project:
+
 Clone the repository:
 git clone https://github.com/your-username/your-repo.git
 
