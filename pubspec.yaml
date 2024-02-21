@@ -57,6 +57,7 @@ dev_dependencies:
   story_view: ^0.16.0
   status_view: ^0.0.2
   intl: ^0.19.0
+  connectivity_plus: ^5.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

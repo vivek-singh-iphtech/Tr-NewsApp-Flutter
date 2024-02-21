@@ -37,12 +37,13 @@ class Search extends ConsumerWidget {
         actions: [
           IconButton(
               onPressed: () {
-                 showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return FilterPopup(query,ToDate,FromDate,sortBy); // Show the FilterDialog
-                },
-              );
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return FilterPopup(query, ToDate, FromDate,
+                        sortBy); // Show the FilterDialog
+                  },
+                );
               },
               icon: Icon(
                 Icons.filter_list,
@@ -172,7 +173,8 @@ class Search extends ConsumerWidget {
                                                               article?.source
                                                                       ?.name ??
                                                                   'No Source',
-                                                              style: const TextStyle(
+                                                              style:
+                                                                  const TextStyle(
                                                                 fontSize: 9,
                                                                 fontWeight:
                                                                     FontWeight
@@ -186,7 +188,8 @@ class Search extends ConsumerWidget {
                                                         Text(
                                                           article?.title ??
                                                               'No Title',
-                                                          style: const TextStyle(
+                                                          style:
+                                                              const TextStyle(
                                                             color:
                                                                 Color.fromARGB(
                                                                     255,
@@ -242,29 +245,34 @@ class ShimmerLoadingEffect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.88,
-      child: SizedBox(
-        width: 300,
-        height: 190,
-        child: Card(
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: Shimmer.fromColors(
-            baseColor: Colors.grey[300]!,
-            highlightColor: Colors.grey[100]!,
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
+        height: MediaQuery.of(context).size.height * 0.88,
+         child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: 10, // Adjust the number of shimmer placeholders as needed
+        itemBuilder: (context, index) {
+          return SizedBox(
+            width: 300,
+            height: 205,
+            child: Card(
+              elevation: 0,
+              shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
-                color: Colors.white,
+              ),
+              child: Shimmer.fromColors(
+                baseColor: Colors.grey[300]!,
+                highlightColor: Colors.grey[100]!,
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
+        },
+      ),);
   }
 }

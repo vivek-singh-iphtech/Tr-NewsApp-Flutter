@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
                       'Quick Reads',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 21,
+                          fontSize: 20,
                           color: Colors.black),
                     ),
                   ),

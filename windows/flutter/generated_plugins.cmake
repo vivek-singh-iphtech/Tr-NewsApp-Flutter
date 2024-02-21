@@ -3,6 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  connectivity_plus
   share_plus
   stories_for_flutter
   url_launcher_windows

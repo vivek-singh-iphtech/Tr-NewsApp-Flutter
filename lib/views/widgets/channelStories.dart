@@ -6,6 +6,7 @@ import 'package:news_app/providers/channelSources_providers.dart';
 import 'package:news_app/views/widgets/story_view.dart';
 import 'package:status_view/status_view.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ChannelStories extends ConsumerWidget {
   const ChannelStories({Key? key}) : super(key: key);
@@ -64,6 +65,7 @@ class ChannelStories extends ConsumerWidget {
                             style: TextStyle(
                               color: const Color.fromARGB(255, 23, 19, 19),
                               fontSize: 12,
+                              fontWeight: FontWeight.w500,
                             ),
                             textAlign: TextAlign.center,
                           ),
@@ -72,7 +74,39 @@ class ChannelStories extends ConsumerWidget {
                 }),
           );
         },
-        loading: () => CircularProgressIndicator(),
+        loading: () => ShimmerLoadingEffect(),
         error: (error, stackTrace) => Text('Error: $error'));
+  }
+}
+
+class ShimmerLoadingEffect extends StatelessWidget {
+  const ShimmerLoadingEffect({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 100,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: 8, // Adjust the number of shimmer placeholders as needed
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Shimmer.fromColors(
+              baseColor: Colors.grey[300]!,
+              highlightColor: Colors.grey[100]!,
+              child: Container(
+                width: 80, // Adjust width as needed
+                height: 80, // Adjust height as needed
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(45.0),
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
   }
 }

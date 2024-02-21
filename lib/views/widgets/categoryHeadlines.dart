@@ -172,10 +172,14 @@ class ShimmerLoadingEffect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height*0.2,
-          child: SizedBox(
+      height: MediaQuery.of(context).size.height*0.35,
+          child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: 2, // Adjust the number of shimmer placeholders as needed
+        itemBuilder: (context, index) {
+          return SizedBox(
             width: 300,
-            height: 190,
+            height: 205,
             child: Card(
               elevation: 0,
               shape: RoundedRectangleBorder(
@@ -194,8 +198,8 @@ class ShimmerLoadingEffect extends StatelessWidget {
                 ),
               ),
             ),
-         
-      ),
-    );
+          );
+        },
+      ));
   }
 }

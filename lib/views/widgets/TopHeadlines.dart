@@ -113,7 +113,7 @@ class TopHeadlines extends ConsumerWidget {
                                             style: TextStyle(
                                               color: Color.fromARGB(
                                                   255, 237, 237, 237),
-                                              fontSize: 14,
+                                              fontSize: 15,
                                             ),
                                             textAlign: TextAlign.left,
                                           ),
